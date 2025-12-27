@@ -19,11 +19,46 @@
 {{-- now if we want to store some value in a variable or define a variable and intialize an arry we must use this --}}
 
 @php
-    $Array = ['ali ','Ahmad' .'umar' ,'manana' ,'ramzan']
+    $Array = ['ali ','Ahmad' ,'umar' ,'manana' ,'ramzan']
 @endphp
  {{-- we are using foreach lop that help you to store array value in a new variable and print it  --}}
 <ul>
     @foreach ($Array as $user )
        <li>{{ $user }}</li> 
+    @endforeach
+</ul>
+
+
+
+{{-- now we have many foreach loop values --}}
+@php
+    // $Array = ['ali ','Ahmad' ,'umar' ,'manana' ,'ramzan'],
+    $values =[1 ,2 ,3 ,4 ,5 ,6 ,7, 8 ,9]
+@endphp
+<ul>
+    @foreach ($Array as $user )
+       {{-- <li>{{ $loop->index }}-{{ $user }}</li> --}}
+
+       <li>{{ $loop->iteration }}-{{ $user }}</li> 
+       
+       {{-- <li>{{ $loop->count }}-{{ $user }}</li>  --}}
+     
+    @endforeach
+</ul>
+
+
+{{-- here we can apply properties like even , odd , first , last   --}}
+@php
+    $values =[1 ,2 ,3 ,4 ,5 ,6 ,7, 8 ,9]
+@endphp
+<ul>
+      @foreach ($values as $num )
+    @if($loop->even)
+        <li style="color: green">{{ $num }}</li>
+        @elseif ($loop->last)
+        <li style="color: red">{{ $num }}</li>
+        @else
+        <li>{{ $num }}</li>
+    @endif
     @endforeach
 </ul>
